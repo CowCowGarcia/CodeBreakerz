@@ -40,19 +40,24 @@ public class LWJGLHelloWorld extends BasicGame {
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException 
 	{
+<<<<<<< HEAD
 		g.drawString("Fuck you",200,200);
+=======
+		// TODO Auto-generated method stub
+		g.drawString("Hello World!",200,200);
+>>>>>>> origin/master
 		
 	}
 
 	@Override
-	public void init(GameContainer arg0) throws SlickException 
+	public void init(GameContainer g) throws SlickException 
 	{
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update(GameContainer arg0, int arg1) throws SlickException 
+	public void update(GameContainer gc, int arg1) throws SlickException 
 	{
 		// TODO Auto-generated method stub
 		
