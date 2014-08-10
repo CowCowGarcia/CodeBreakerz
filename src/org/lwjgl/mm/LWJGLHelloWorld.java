@@ -24,7 +24,8 @@ public class LWJGLHelloWorld extends BasicGame {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	Entity player = new Entity();
+	Controller controller = new Controller();
 
 	public static void main(String[] args) {
 		LWJGLHelloWorld game = new LWJGLHelloWorld("yoyoyo");
@@ -36,25 +37,37 @@ public class LWJGLHelloWorld extends BasicGame {
 	          e.printStackTrace();
 	     }
 	}
-
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException 
 	{
 
-		g.drawString("Fuck you",200,200);	
+		g.drawString("Fuck you",player.x,player.y);	
+		
+		if(controller.keyDownUP){
+			player.Up();
+		}
+		
+		if(controller.keyDownLEFT){
+			player.Left();
+		}
+		
+		if(controller.keyDownRIGHT){
+			player.Right();
+		}
+		
+		if(controller.keyDownDOWN){
+			player.Down();
+		}
 	}
-
 	@Override
 	public void init(GameContainer g) throws SlickException 
 	{
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void update(GameContainer gc, int arg1) throws SlickException 
 	{
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 }
