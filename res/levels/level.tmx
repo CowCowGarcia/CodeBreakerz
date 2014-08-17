@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="209" height="23" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="level" tilewidth="16" tileheight="16">
+  <image source="../textures/spritesheet.png" width="256" height="256"/>
+ </tileset>
+ <layer name="collision" width="209" height="23" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3XwQkAIAwDQHH/of36ESpUwXoH2SBi2hoAAAAAAAAAAAAAAPypT6mgBwK7Ip3SOQCAu17bX1l3ipsHgEr8W7VkbZPbvTi5p07vtRfeUGS/isg6AxzvGuYcSwAA
+  </data>
+ </layer>
+ <layer name="background" width="209" height="23">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3Y2w6DIAwAUB/0/395r4YgrbKEdZ6Hk3iBZcVWgX3bth0AAIDtaPSuj/rd+c3z/d4xVNSrm/b6Vb9sjbRtKtdQ9t2SHb/V8fCdnOidj55vVGujmjn3r5RH7f+9ivvoHEdjSG1tPrc5MPudGeVLlRzK5ns27mrxEz/3O/ndq7lorvYPNfS0TTTvWx0b867mJqO9hihPsnO1Kjk0U0O98akWP8yK3hHZPYTVccBKT9aFUX94k5m9k15beKPM/M3aB+Zl10vqCgAAAAAAAH7fB14vVn4cSwAA
+  </data>
+ </layer>
+ <layer name="level" width="209" height="23">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3YsQkAMAhFQcH9d06bIsTGQpI7eJ0DfIwAAAAAAAAAAAAAAIA/5RZwlkXVDQAA/ewvAIBZuraZPfeW6rcq6d4CWPegQxxLAAA=
+  </data>
+ </layer>
+ <layer name="text " width="209" height="23">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3XsQkAMAgEQCH775wVLGJQuQN7G/E/AgAAAAAAAAAAAAAA2OAkBgAA4LdXPUXnAWATf4sOKvNUdV5zQ3QwuYtM2PkC569RVxxLAAA=
+  </data>
+ </layer>
+</map>
