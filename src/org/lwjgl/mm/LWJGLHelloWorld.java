@@ -6,13 +6,15 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.tiled.TiledMap;
 
 public class LWJGLHelloWorld extends BasicGame 
 {
 	
-	Entity player;
-	Controller controller;
-	Image p1;
+	private Entity player;
+	private Controller controller;
+	private Image p1;
+	private TiledMap level;
 	
 	/**Constructor setting title **/
 	public LWJGLHelloWorld(String title) 
@@ -27,6 +29,7 @@ public class LWJGLHelloWorld extends BasicGame
 		controller = new Controller(gc); // GameContainer given to Controller class
 		player = new Entity();
 		p1 = new Image("res/sprites/Idle.png");
+		//level = new TiledMap("res/levels/level.tmx"); //leave this for now
 		
 	}
 	
@@ -37,7 +40,7 @@ public class LWJGLHelloWorld extends BasicGame
 
 		g.drawString("Fuck you",player.getX(),player.getY() - 20);	
 		g.drawImage(p1, player.getX(),player.getY());
-		
+		//level.render(0, 0); //leave this for now
 	}
 	
 	/**update method overridden from BasicGame class in the slick library, this is where all movement and anything that constantly needs to change happens.
@@ -75,6 +78,11 @@ public class LWJGLHelloWorld extends BasicGame
 	     try 
 	     {
 	          AppGameContainer container = new AppGameContainer(game);
+	          container.setMaximumLogicUpdateInterval(60);			
+	          container.setDisplayMode(640, 480, false);//specify container size and if its full screen?
+	          container.setTargetFrameRate(60);
+	          container.setAlwaysRender(true);
+	          container.setVSync(true);
 	          container.start();
 	     } 
 	     catch (SlickException e) 
