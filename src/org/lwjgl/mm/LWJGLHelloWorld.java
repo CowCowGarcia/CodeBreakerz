@@ -51,7 +51,7 @@ public class LWJGLHelloWorld extends BasicGame
 		  
 		if(controller.isKeyDownUP())
 		{
-			player.Up();
+			player.Jump();
 		}
 		
 		if(controller.isKeyDownLEFT())
