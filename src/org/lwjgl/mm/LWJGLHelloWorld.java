@@ -11,10 +11,12 @@ import org.newdawn.slick.tiled.TiledMap;
 public class LWJGLHelloWorld extends BasicGame 
 {
 	
-	private Entity player;
+	private Player player;
 	private Controller controller;
 	private Image p1;
 	private TiledMap level;
+	boolean up = false;
+	double counter2 = 4;
 	
 	/**Constructor setting title **/
 	public LWJGLHelloWorld(String title) 
@@ -27,7 +29,7 @@ public class LWJGLHelloWorld extends BasicGame
 	public void init(GameContainer gc) throws SlickException 
 	{
 		controller = new Controller(gc); // GameContainer given to Controller class
-		player = new Entity();
+		player = new Player();
 		p1 = new Image("res/sprites/Idle.png");
 		//level = new TiledMap("res/levels/level.tmx"); //leave this for now
 		
@@ -51,8 +53,20 @@ public class LWJGLHelloWorld extends BasicGame
 		  
 		if(controller.isKeyDownUP())
 		{
-			player.Jump();
+			counter2 = counter2 + 0.1;
+			up = true;
+			player.Jump((int) ((Math.sin(counter2)+Math.cos(counter2))*20));
+			if (counter2 >= 7)
+			{
+				counter2 = 4;
+			}
 		}
+		else
+		{
+			up = false;
+			counter2 = 4;
+		}
+	
 		
 		if(controller.isKeyDownLEFT())
 		{
@@ -63,9 +77,13 @@ public class LWJGLHelloWorld extends BasicGame
 		{
 			player.Right();
 		}
-		if (player.getY() < 400)
+		if (player.getY() < 400 && !up)
 		{
 			player.gravitons();
+		}
+		if (player.getY() > 400)
+		{
+			player.setY(400);
 		}
 		
 	}

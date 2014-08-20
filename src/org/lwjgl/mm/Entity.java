@@ -1,14 +1,14 @@
 package org.lwjgl.mm;
 
-public class Entity {
+public abstract class Entity {
 
 	//TODO have speed controlled by delta and have some sort of velocity
 	private float horizontalSpeed = 1;
 	private float jumpHeight = 3;
 	private double gravity = 1.1;
 	private double speedIncrease = 1.1;
-	private float x = 100;
-	private float y = 100;
+	protected float x = 100;
+	protected float y = 100;
 
 	float vertical_speed = 1;
     float vertical_position;  
@@ -17,24 +17,26 @@ public class Entity {
     
     public void gravitons ()
     {
-        this.vertical_speed = (float) (this.vertical_speed * gravity);
+        /*this.vertical_speed = (float) (this.vertical_speed * gravity);
         
         if (this.vertical_speed > Y_TERMINAL_VELOCITY)
         {
             this.vertical_speed = Y_TERMINAL_VELOCITY;
-        }
-        this.y = this.y + this.vertical_speed;
+        }*/
+        this.y = this.y + 10;
+        
+        if (y > 400) y = 400;//keeps it on the level
     }
     
-	public void Jump()
+	public void Jump(int s)
 	{
-		this.vertical_speed = (float) (this.vertical_speed + gravity);
+		/*this.vertical_speed = (float) (this.vertical_speed + gravity);
     if (this.vertical_speed > Y_TERMINAL_VELOCITY)
     {
         this.vertical_speed = Y_TERMINAL_VELOCITY;
     }
-    this.y = this.y - this.vertical_speed;
-    y= y-jumpHeight;
+    this.y = this.y - this.vertical_speed;*/
+    y= y+ s;
 	}
 
 	public void Left()
@@ -65,6 +67,11 @@ public class Entity {
 	public float getY()
 	{
 		return y;
+	}
+	
+	public void setY(float y)
+	{
+		this.y = y;
 	}
 }
 
