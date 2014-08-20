@@ -63,8 +63,9 @@ public class LWJGLHelloWorld extends BasicGame
 		{
 			player.Right();
 		}
-		else{
-		player.gravitons();
+		if (player.getY() < 400)
+		{
+			player.gravitons();
 		}
 		
 	}
