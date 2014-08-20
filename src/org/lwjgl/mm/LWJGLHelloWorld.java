@@ -63,11 +63,10 @@ public class LWJGLHelloWorld extends BasicGame
 		{
 			player.Right();
 		}
-		
-		if(controller.isKeyDownDOWN())
-		{
-			player.Down();
+		else{
+		player.gravitons();
 		}
+		
 	}
 	
 	/**main method sets up container**/
