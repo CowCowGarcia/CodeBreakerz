@@ -35,7 +35,7 @@ public class LWJGLHelloWorld extends BasicGame
 	public void render(GameContainer gc, Graphics g) throws SlickException 
 	{
 
-		g.drawString("Fuck you",player.getX(),player.getY() - 20);	
+			
 		g.drawImage(p1, player.getX(),player.getY());
 		
 	}

@@ -2,7 +2,6 @@ package org.lwjgl.mm;
 
 public class Entity {
 
-	//TODO make a constructor that takes in speed, x and y so these values can be set when an entity is initialised
 	//TODO have speed controlled by delta and have some sort of velocity
 	private float speed = 1;
 	private float x = 100;
