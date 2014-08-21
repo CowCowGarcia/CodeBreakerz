@@ -5,6 +5,7 @@ import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
@@ -34,15 +35,14 @@ public class LWJGLHelloWorld extends BasicGame
 		//level = new TiledMap("res/levels/level.tmx"); //leave this for now
 		
 	}
-	
+	String released= "False";
 	/**render method overridden from BasicGame class in the slick library, here is where everytrhing is drawn to screen **/
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException 
 	{
-
-			
 		g.drawImage(p1, player.getX(),player.getY());
 		//level.render(0, 0); //leave this for now
+		g.drawString(released, 100, 100);
 	}
 	
 	/**update method overridden from BasicGame class in the slick library, this is where all movement and anything that constantly needs to change happens.
@@ -63,21 +63,62 @@ public class LWJGLHelloWorld extends BasicGame
 		}
 		else
 		{
+			
 			up = false;
 			counter2 = 4;
 		}
 	
+		boolean playerLeft = false;
 		
+		/*if()
+		{
+			player.setHorizontalSpeed((float) (player.getHorizontalSpeed() / player.getSpeedIncrease()));
+			player.x = player.x - player.getHorizontalSpeed();
+			
+			if (player.getHorizontalSpeed() == 0)
+			{
+				player.setHorizontalSpeed(1);
+			}
+		}*/
 		if(controller.isKeyDownLEFT())
 		{
 			player.Left();
+			keyPressed(Input.KEY_A, 'a');
+			released = "left";
 		}
-		
+		else
+		{keyReleased(Input.KEY_A, 'a');}
 		if(controller.isKeyDownRIGHT())
 		{
 			player.Right();
+			keyPressed(Input.KEY_D, 'd');
+			released = "right";
 		}
-		if (player.getY() < 400 && !up)
+		else
+		{keyReleased(Input.KEY_D, 'd');}
+		
+		
+		
+		
+	
+			
+			
+		
+		/*else if(!controller.isKeyDownLEFT()&& !controller.isKeyDownRIGHT())
+		{
+			player.setHorizontalSpeed((float) (player.getHorizontalSpeed() / player.getSpeedIncrease()));
+			player.x = player.x + player.getHorizontalSpeed();
+			
+			if (player.getHorizontalSpeed() == 0)
+			{
+				player.setHorizontalSpeed(1);
+			}
+		}*/
+	
+		
+		
+		
+		 if (player.getY() < 400 && !up)
 		{
 			player.gravitons();
 		}
@@ -87,6 +128,46 @@ public class LWJGLHelloWorld extends BasicGame
 		}
 		
 	}
+	
+	public void keyPressed(int key, char c) {
+		
+		if (key == Input.KEY_D) {
+			player.Right();
+		}
+		
+		if (key == Input.KEY_A) {
+			player.Left();
+		}/*;
+		if (key == Input.KEY_D) {
+			player.Right();;
+		};
+		if (key == Input.KEY_D) {
+			player.Right();;
+		};*/
+	}
+	
+	public void keyReleased(int key, char c){
+		if (released == "right")
+		{
+			if (key == Input.KEY_D) 
+			{
+				player.StopRight();
+			//released = "True";
+			
+			}
+		}
+		
+		if (released == "left")
+		{
+			if (key == Input.KEY_A) 
+			{
+				player.StopLeft();
+			//released = "blue";
+			
+			}
+		}
+	}
+	
 	
 	/**main method sets up container**/
 	public static void main(String[] args) 

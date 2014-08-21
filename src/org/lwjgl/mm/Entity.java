@@ -6,14 +6,15 @@ public abstract class Entity {
 	private float horizontalSpeed = 1;
 	private float jumpHeight = 3;
 	private double gravity = 1.1;
-	private double speedIncrease = 1.1;
+	private double speedIncrease = 1.05;
 	protected float x = 100;
 	protected float y = 100;
 
 	float vertical_speed = 1;
     float vertical_position;  
     private float Y_TERMINAL_VELOCITY = 20;
-    private float X_MAX_SPEED = 30;
+    private float X_MAX_SPEED = 2;
+	private float setHorizontalSpeed;
     
     public void gravitons ()
     {
@@ -43,20 +44,49 @@ public abstract class Entity {
 	
 	{	
 
-		this.horizontalSpeed = (float) (this.horizontalSpeed * speedIncrease);
+		this.setHorizontalSpeed((float) (this.getHorizontalSpeed() * getSpeedIncrease()));
 	
-	    if (this.horizontalSpeed > X_MAX_SPEED)
+	    if (this.getHorizontalSpeed() > X_MAX_SPEED)
 	    {
-	        this.horizontalSpeed = X_MAX_SPEED;
+	        this.setHorizontalSpeed(X_MAX_SPEED);
 	    }
 	    
-	    this.x = this.x - this.horizontalSpeed;
+	    this.x = this.x - this.getHorizontalSpeed();
 		
 	}
 	
 	public void Right()
 	{
-		x= x+horizontalSpeed;
+		this.setHorizontalSpeed((float) (this.getHorizontalSpeed() * getSpeedIncrease()));
+		
+	    if (this.getHorizontalSpeed() > X_MAX_SPEED)
+	    {
+	        this.setHorizontalSpeed(X_MAX_SPEED);
+	    }
+	    
+	    this.x = this.x + this.getHorizontalSpeed();
+	}
+	
+	public void StopRight()
+	{
+		this.setHorizontalSpeed ((float) (this.getHorizontalSpeed() / this.getSpeedIncrease()));
+		this.x = this.x + this.getHorizontalSpeed();
+		
+		if (this.getHorizontalSpeed() == 0)
+		{
+		this.setHorizontalSpeed(1);
+		}
+	}
+	
+	public void StopLeft()
+	{
+		this.setHorizontalSpeed ((float) (this.getHorizontalSpeed() / this.getSpeedIncrease()));
+		this.x = this.x - this.getHorizontalSpeed();
+		
+		if (this.getHorizontalSpeed() == 0)
+		{
+		this.setHorizontalSpeed(1);
+		}
 	}
 	
 	public float getX()
@@ -72,6 +102,22 @@ public abstract class Entity {
 	public void setY(float y)
 	{
 		this.y = y;
+	}
+
+	public float getHorizontalSpeed() {
+		return horizontalSpeed;
+	}
+
+	public void setHorizontalSpeed(float horizontalSpeed) {
+		this.horizontalSpeed = horizontalSpeed;
+	}
+
+	public double getSpeedIncrease() {
+		return speedIncrease;
+	}
+
+	public void setSpeedIncrease(double speedIncrease) {
+		this.speedIncrease = speedIncrease;
 	}
 }
 
