@@ -15,29 +15,36 @@ public abstract class Entity {
     private float Y_TERMINAL_VELOCITY = 20;
     private float X_MAX_SPEED = 2;
 	private float setHorizontalSpeed;
+	
+	private int score;
+	private int health;
+	private int lives;
     
     public void gravitons ()
     {
-        /*this.vertical_speed = (float) (this.vertical_speed * gravity);
+        this.vertical_speed = (float) (this.vertical_speed * gravity);
         
         if (this.vertical_speed > Y_TERMINAL_VELOCITY)
         {
             this.vertical_speed = Y_TERMINAL_VELOCITY;
-        }*/
-        this.y = this.y + 10;
+        }
+        
+        this.y = this.y + this.vertical_speed;
+        
+        
         
         if (y > 400) y = 400;//keeps it on the level
     }
     
 	public void Jump(int s)
 	{
-		/*this.vertical_speed = (float) (this.vertical_speed + gravity);
+		this.vertical_speed = (float) (this.vertical_speed + gravity);
     if (this.vertical_speed > Y_TERMINAL_VELOCITY)
     {
         this.vertical_speed = Y_TERMINAL_VELOCITY;
     }
-    this.y = this.y - this.vertical_speed;*/
-    y= y+ s;
+    this.y = this.y - this.vertical_speed;
+   // y= y+ s;
 	}
 
 	public void Left()
@@ -76,6 +83,8 @@ public abstract class Entity {
 		{
 		this.setHorizontalSpeed(1);
 		}
+		
+		score++;
 	}
 	
 	public void StopLeft()
@@ -118,6 +127,14 @@ public abstract class Entity {
 
 	public void setSpeedIncrease(double speedIncrease) {
 		this.speedIncrease = speedIncrease;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int i) {
+		this.score = i;
 	}
 }
 

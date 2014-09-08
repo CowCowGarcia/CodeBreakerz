@@ -35,14 +35,16 @@ public class LWJGLHelloWorld extends BasicGame
 		//level = new TiledMap("res/levels/level.tmx"); //leave this for now
 		
 	}
-	String released= "False";
+	String released= "player.getScore()";
 	/**render method overridden from BasicGame class in the slick library, here is where everytrhing is drawn to screen **/
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException 
 	{
 		g.drawImage(p1, player.getX(),player.getY());
 		//level.render(0, 0); //leave this for now
-		g.drawString(released, 100, 100);
+		g.drawString(released, 10, 30);
+		
+		
 	}
 	
 	/**update method overridden from BasicGame class in the slick library, this is where all movement and anything that constantly needs to change happens.
@@ -51,6 +53,8 @@ public class LWJGLHelloWorld extends BasicGame
 	public void update(GameContainer gc, int arg1) throws SlickException 
 	{
 		  
+		player.setScore(0);
+		
 		if(controller.isKeyDownUP())
 		{
 			counter2 = counter2 + 0.1;
