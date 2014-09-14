@@ -35,7 +35,9 @@ public class LWJGLHelloWorld extends BasicGame
 		//level = new TiledMap("res/levels/level.tmx"); //leave this for now
 		
 	}
+	
 	String released= "player.getScore()";
+	
 	/**render method overridden from BasicGame class in the slick library, here is where everytrhing is drawn to screen **/
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException 
@@ -43,7 +45,7 @@ public class LWJGLHelloWorld extends BasicGame
 		g.drawImage(p1, player.getX(),player.getY());
 		//level.render(0, 0); //leave this for now
 		g.drawString(released, 10, 30);
-		
+		//g.drawString(player.getHorizontalSpeed(), 30, 30);
 		
 	}
 	
@@ -74,50 +76,30 @@ public class LWJGLHelloWorld extends BasicGame
 	
 		boolean playerLeft = false;
 		
-		/*if()
-		{
-			player.setHorizontalSpeed((float) (player.getHorizontalSpeed() / player.getSpeedIncrease()));
-			player.x = player.x - player.getHorizontalSpeed();
-			
-			if (player.getHorizontalSpeed() == 0)
-			{
-				player.setHorizontalSpeed(1);
-			}
-		}*/
+	
 		if(controller.isKeyDownLEFT())
 		{
-			player.Left();
+			
 			keyPressed(Input.KEY_A, 'a');
 			released = "left";
 		}
 		else
-		{keyReleased(Input.KEY_A, 'a');}
+		{
+			keyReleased(Input.KEY_A, 'a');
+		}
+		
 		if(controller.isKeyDownRIGHT())
 		{
-			player.Right();
+			
 			keyPressed(Input.KEY_D, 'd');
 			released = "right";
 		}
 		else
-		{keyReleased(Input.KEY_D, 'd');}
-		
-		
-		
-		
-	
-			
-			
-		
-		/*else if(!controller.isKeyDownLEFT()&& !controller.isKeyDownRIGHT())
 		{
-			player.setHorizontalSpeed((float) (player.getHorizontalSpeed() / player.getSpeedIncrease()));
-			player.x = player.x + player.getHorizontalSpeed();
-			
-			if (player.getHorizontalSpeed() == 0)
-			{
-				player.setHorizontalSpeed(1);
-			}
-		}*/
+			keyReleased(Input.KEY_D, 'd');
+		}
+		
+		
 	
 		
 		
