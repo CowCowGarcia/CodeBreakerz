@@ -18,11 +18,14 @@ public class LWJGLHelloWorld extends BasicGame
 	private TiledMap level;
 	boolean up = false;
 	double counter2 = 4;
+	private Image collisionimg;
+	private Collision collision;
 	
 	/**Constructor setting title **/
 	public LWJGLHelloWorld(String title) 
 	{
 		super(title);
+		
 	}
 	
 	/**init method overridden from BasicGame class in the slick library, here is where variables are initialised for use**/
@@ -32,8 +35,10 @@ public class LWJGLHelloWorld extends BasicGame
 		controller = new Controller(gc); // GameContainer given to Controller class
 		player = new Player();
 		p1 = new Image("res/sprites/Idle.png");
+		collisionimg = new Image("res/levels/testCol.png");
 		//level = new TiledMap("res/levels/level.tmx"); //leave this for now
-		
+
+		collision = new Collision(collisionimg); 
 	}
 	
 	String released= "player.getScore()";
@@ -42,6 +47,7 @@ public class LWJGLHelloWorld extends BasicGame
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException 
 	{
+		g.drawImage(collisionimg, 0, 0);
 		g.drawImage(p1, player.getX(),player.getY());
 		//level.render(0, 0); //leave this for now
 		g.drawString(released, 10, 30);
@@ -49,12 +55,14 @@ public class LWJGLHelloWorld extends BasicGame
 		
 	}
 	
+	
 	/**update method overridden from BasicGame class in the slick library, this is where all movement and anything that constantly needs to change happens.
 	 * This method loops until game is closed **/
 	@Override
 	public void update(GameContainer gc, int arg1) throws SlickException 
 	{
-		  
+		  System.out.print(player.getX()+ "  ");
+		
 		player.setScore(0);
 		
 		if(controller.isKeyDownUP())
@@ -104,7 +112,7 @@ public class LWJGLHelloWorld extends BasicGame
 		
 		
 		
-		 if (player.getY() < 400 && !up)
+		 if (collision.bottomClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight()) && !up)
 		{
 			player.gravitons();
 		}

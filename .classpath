@@ -2,13 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="M:/Users/docbob/Desktop/CodeBreakerz/lib/jars/lwjgl.jar">
+	<classpathentry kind="lib" path="C:/Users/Cfrancois/Desktop/CodeBreakerz/lib/jars/lwjgl.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Java Game Test/lib/natives-win"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/Cfrancois/Desktop/CodeBreakerz/lib/natives-win"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="M:/Users/docbob/Desktop/CodeBreakerz/lib/jars/lwjgl_util.jar"/>
-	<classpathentry kind="lib" path="M:/Users/docbob/Desktop/CodeBreakerz/lib/jars/slick-util.jar"/>
-	<classpathentry kind="lib" path="M:/Users/docbob/Desktop/CodeBreakerz/lib/jars/slick.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cfrancois/Desktop/CodeBreakerz/lib/jars/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cfrancois/Desktop/CodeBreakerz/lib/jars/slick-util.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cfrancois/Desktop/CodeBreakerz/lib/jars/slick.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
