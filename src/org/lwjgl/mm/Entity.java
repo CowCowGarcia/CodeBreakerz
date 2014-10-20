@@ -11,8 +11,8 @@ public abstract class Entity {
 	private float horizontalSpeed = 0.5f;
 	private float speedIncrease = 0.05f; 
 	
-	protected float x = 100;
-	protected float y = 100;
+	private float x = 100;
+	private float y = 100;
 
 	float vertical_speed = 0.5f;
     float vertical_position;  

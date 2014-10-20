@@ -7,7 +7,6 @@ public class Collision
 {
 	private Image colMap;
 	boolean blocked[][];
-	Color collision = new Color(1,0,0,1);
 	
 	public Collision(Image cm)
 	{
@@ -43,7 +42,40 @@ public class Collision
 	
 	public boolean bottomClear(float xpos, float ypos, int width, int height)
 	{
-		if(isBlocked(xpos, ypos + height) || isBlocked(xpos, (ypos + height)))
+		if(isBlocked(xpos, ypos + height) || isBlocked(xpos + width, ypos + height))
+		{
+			return false;
+		}
+		
+		return true;
+			
+	}
+	
+	public boolean leftClear(float xpos, float ypos, int width, int height)
+	{
+		if(isBlocked(xpos, ypos) || isBlocked(xpos, ypos + height - 1))
+		{
+			return false;
+		}
+		
+		return true;
+			
+	}
+	
+	public boolean rightClear(float xpos, float ypos, int width, int height)
+	{
+		if(isBlocked(xpos + width, ypos) || isBlocked(xpos + width, ypos + height - 1))
+		{
+			return false;
+		}
+		
+		return true;
+			
+	}
+	
+	public boolean upClear(float xpos, float ypos, int width, int height)
+	{
+		if(isBlocked(xpos, ypos) || isBlocked(xpos + width, ypos))
 		{
 			return false;
 		}
