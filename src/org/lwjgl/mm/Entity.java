@@ -4,25 +4,25 @@ package org.lwjgl.mm;
 * class. other classes will use these methods and variables **/
 public abstract class Entity {
 
-	private float jumpHeight = 3;
-	private float gravity = 0.1f;
+	protected float jumpHeight = 3;
+	protected float gravity = 0.1f;
 	
 	//these values control x movement 
-	private float horizontalSpeed = 0.5f;
-	private float speedIncrease = 0.05f; 
+	protected float horizontalSpeed = 0.5f;
+	protected float speedIncrease = 0.05f; 
 	
-	private float x = 100;
-	private float y = 100;
+	protected float x = 100;
+	protected float y = 100;
 
-	float vertical_speed = 0.5f;
-    float vertical_position;  
-    private float Y_TERMINAL_VELOCITY = 20;
-    private float X_MAX_SPEED = 6;
+	protected float vertical_speed = 0.5f;
+	protected float vertical_position;  
+    protected final float Y_TERMINAL_VELOCITY = 20;
+    protected final float X_MAX_SPEED = 6;
 	
 	
-	private int score;
-	private int health;
-	private int lives;
+    protected int score;
+    protected int health;
+    protected int lives;
     
     public void gravitons ()
     {
@@ -40,66 +40,9 @@ public abstract class Entity {
         if (y > 400) y = 400;//keeps it on the level
     }
     
-	public void Jump(int s)
-	{
-		/*this.vertical_speed = this.vertical_speed + gravity;
-    if (this.vertical_speed > Y_TERMINAL_VELOCITY)
-    {
-        this.vertical_speed = Y_TERMINAL_VELOCITY;
-    }
-    this.y = this.y - this.vertical_speed;*/
-    y= y+ s;
-	}
-
-	/**while left is being called changes x coordinate by the changing horizontal speed **/
-	public void Left()
-	{	
-		//the horizontal speed gets increased
-		horizontalSpeed = horizontalSpeed + speedIncrease;
-	
-		//keeps horizontal speed from going over max speed
-	    if (horizontalSpeed > X_MAX_SPEED) horizontalSpeed = X_MAX_SPEED;
-	    
-	    // decreases x coordinate by the horizontal speed
-	    x = x - horizontalSpeed;
-		
-	}
-
-	/**while right is being called changes x coordinate by the changing horizontal speed **/
-	public void Right()
-	{
-		//the horizontal speed gets increased
-		horizontalSpeed = horizontalSpeed + speedIncrease;
-		
-		//keeps horizontal speed from going over max speed
-	    if (horizontalSpeed > X_MAX_SPEED) horizontalSpeed = X_MAX_SPEED;
-	    
-	    // increases x coordinate by the horizontal speed
-	    x = x + horizontalSpeed;
-	}
-	
-	public void StopRight()
-	{
-		horizontalSpeed = horizontalSpeed - speedIncrease *2;
-		
-		if (horizontalSpeed < 0) horizontalSpeed = 0f;
-		
-		x = x + horizontalSpeed;
-		
-		
-		
-		score++;
-	}
-	
-	public void StopLeft()
-	{
-		horizontalSpeed = horizontalSpeed - speedIncrease*2;
-		
-		if (horizontalSpeed < 0) horizontalSpeed = 0f;
-		
-		x = x - horizontalSpeed;
-	}
-	
+	//TODO entity should get generic left and right functions
+    
+    
 	public float getX()
 	{
 		return x;

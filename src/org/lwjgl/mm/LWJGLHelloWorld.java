@@ -52,6 +52,8 @@ public class LWJGLHelloWorld extends BasicGame
 		//level.render(0, 0); //leave this for now
 		g.drawString(released, 10, 30);
 		
+		System.out.print(collisionimg.getHeight());
+		
 	}
 	
 	
