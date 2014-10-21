@@ -16,7 +16,7 @@ public class Collision
 	
 	private void scan()
 	{
-		blocked = new boolean[colMap.getWidth()][colMap.getHeight()];
+		blocked = new boolean[colMap.getWidth()][colMap.getHeight()+100];
 		
 		for(int x = 0; x < colMap.getWidth(); x++)
 		{
@@ -33,7 +33,7 @@ public class Collision
 	
 	public boolean isBlocked(float x, float y)
 	{
-		if(blocked[(int)x][(int)y])
+		if(blocked[(int) x][(int)y])
 		{
 			return true;
 		}
@@ -51,9 +51,9 @@ public class Collision
 			
 	}
 	
-	public boolean leftClear(float xpos, float ypos, int width, int height)
+	public boolean leftClear(float xpos, float ypos, int width, int height, float speed)
 	{
-		if(isBlocked(xpos, ypos) || isBlocked(xpos, ypos + height - 1))
+		if(isBlocked(xpos - speed, ypos) || isBlocked(xpos - speed, ypos + height - 1))
 		{
 			return false;
 		}
@@ -62,9 +62,9 @@ public class Collision
 			
 	}
 	
-	public boolean rightClear(float xpos, float ypos, int width, int height)
+	public boolean rightClear(float xpos, float ypos, int width, int height, float speed)
 	{
-		if(isBlocked(xpos + width, ypos) || isBlocked(xpos + width, ypos + height - 1))
+		if(isBlocked((xpos + width)+speed, ypos) || isBlocked((xpos + width)+speed, ypos + height - 1))
 		{
 			return false;
 		}

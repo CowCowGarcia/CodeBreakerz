@@ -124,13 +124,13 @@ public class LWJGLHelloWorld extends BasicGame
 		
 		if (key == Input.KEY_D) 
 		{
-			if(collision.rightClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight()))//check collision
+			if(collision.rightClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight(), player.getHorizontalSpeed()))//check collision
 			player.Right();
 		}
 		
 		if (key == Input.KEY_A) 
 		{
-			if (collision.leftClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight()))//check collision
+			if (collision.leftClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight(), player.getHorizontalSpeed()))//check collision
 			player.Left();
 		}
 	}
@@ -141,7 +141,7 @@ public class LWJGLHelloWorld extends BasicGame
 		{
 			if (key == Input.KEY_D) 
 			{
-				if(collision.rightClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight()))//check collision
+				if(collision.rightClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight(), player.getHorizontalSpeed()))//check collision
 				player.StopRight();
 			}
 		}
@@ -150,7 +150,7 @@ public class LWJGLHelloWorld extends BasicGame
 		{
 			if (key == Input.KEY_A) 
 			{
-				if (collision.leftClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight()))//check collision
+				if (collision.leftClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight(), player.getHorizontalSpeed()))//check collision
 				player.StopLeft();
 			}
 		}
