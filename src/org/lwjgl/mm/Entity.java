@@ -38,13 +38,13 @@ public abstract class Entity {
     
 	public void Jump(int s)
 	{
-		this.vertical_speed = (float) (this.vertical_speed + gravity);
+		/*this.vertical_speed = (float) (this.vertical_speed + gravity);
     if (this.vertical_speed > Y_TERMINAL_VELOCITY)
     {
         this.vertical_speed = Y_TERMINAL_VELOCITY;
     }
-    this.y = this.y - this.vertical_speed;
-   // y= y+ s;
+    this.y = this.y - this.vertical_speed;*/
+   y= y+ s;
 	}
 
 	public void Left()
@@ -96,6 +96,16 @@ public abstract class Entity {
 		{
 		this.setHorizontalSpeed(1);
 		}
+	}
+	
+	public void StartJump()
+	{
+		
+	}
+	
+	public void EndJump()
+	{
+		
 	}
 	
 	public float getX()

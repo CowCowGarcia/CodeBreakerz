@@ -71,30 +71,20 @@ public class LWJGLHelloWorld extends BasicGame
 			up = false;
 			counter2 = 4;
 		}
-	
-		boolean playerLeft = false;
 		
-		/*if()
-		{
-			player.setHorizontalSpeed((float) (player.getHorizontalSpeed() / player.getSpeedIncrease()));
-			player.x = player.x - player.getHorizontalSpeed();
-			
-			if (player.getHorizontalSpeed() == 0)
-			{
-				player.setHorizontalSpeed(1);
-			}
-		}*/
+		
 		if(controller.isKeyDownLEFT())
 		{
-			player.Left();
+			//player.Left();
 			keyPressed(Input.KEY_A, 'a');
 			released = "left";
 		}
 		else
 		{keyReleased(Input.KEY_A, 'a');}
+		
 		if(controller.isKeyDownRIGHT())
 		{
-			player.Right();
+			//player.Right();
 			keyPressed(Input.KEY_D, 'd');
 			released = "right";
 		}
@@ -102,30 +92,15 @@ public class LWJGLHelloWorld extends BasicGame
 		{keyReleased(Input.KEY_D, 'd');}
 		
 		
-		
-		
-	
-			
-			
-		
-		/*else if(!controller.isKeyDownLEFT()&& !controller.isKeyDownRIGHT())
-		{
-			player.setHorizontalSpeed((float) (player.getHorizontalSpeed() / player.getSpeedIncrease()));
-			player.x = player.x + player.getHorizontalSpeed();
-			
-			if (player.getHorizontalSpeed() == 0)
-			{
-				player.setHorizontalSpeed(1);
-			}
-		}*/
 	
 		
 		
-		
-		 if (player.getY() < 400 && !up)
+		//sets gravity moves player down when above the ground
+		if (player.getY() < 400 && !up)
 		{
 			player.gravitons();
 		}
+		//if player gets stuck in floor moves player above
 		if (player.getY() > 400)
 		{
 			player.setY(400);
