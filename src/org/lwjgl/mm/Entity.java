@@ -1,28 +1,32 @@
 package org.lwjgl.mm;
 
+/**this is an abstract class, this class never gets called but is extended to other classes like the player 
+* class. other classes will use these methods and variables **/
 public abstract class Entity {
 
-	//TODO have speed controlled by delta and have some sort of velocity
-	private float horizontalSpeed = 1;
-	private float jumpHeight = 3;
-	private double gravity = 1.1;
-	private double speedIncrease = 1.05;
+	protected float jumpHeight = 3;
+	protected float gravity = 0.1f;
+	
+	//these values control x movement 
+	protected float horizontalSpeed = 0.5f;
+	protected float speedIncrease = 0.05f; 
+	
 	protected float x = 100;
 	protected float y = 100;
 
-	float vertical_speed = 1;
-    float vertical_position;  
-    private float Y_TERMINAL_VELOCITY = 20;
-    private float X_MAX_SPEED = 2;
-	private float setHorizontalSpeed;
+	protected float vertical_speed = 0.5f;
+	protected float vertical_position;  
+    protected final float Y_TERMINAL_VELOCITY = 20;
+    protected final float X_MAX_SPEED = 6;
 	
-	private int score;
-	private int health;
-	private int lives;
+	
+    protected int score;
+    protected int health;
+    protected int lives;
     
     public void gravitons ()
     {
-        this.vertical_speed = (float) (this.vertical_speed * gravity);
+        this.vertical_speed = (float) (this.vertical_speed + gravity);
         
         if (this.vertical_speed > Y_TERMINAL_VELOCITY)
         {
@@ -36,6 +40,7 @@ public abstract class Entity {
         if (y > 400) y = 400;//keeps it on the level
     }
     
+<<<<<<< HEAD
 	public void Jump(int s)
 	{
 		/*this.vertical_speed = (float) (this.vertical_speed + gravity);
@@ -108,6 +113,11 @@ public abstract class Entity {
 		
 	}
 	
+=======
+	//TODO entity should get generic left and right functions
+    
+    
+>>>>>>> 19969df81244a5fc02e74fa4d16e01d5103c275b
 	public float getX()
 	{
 		return x;
@@ -135,7 +145,7 @@ public abstract class Entity {
 		return speedIncrease;
 	}
 
-	public void setSpeedIncrease(double speedIncrease) {
+	public void setSpeedIncrease(float speedIncrease) {
 		this.speedIncrease = speedIncrease;
 	}
 
@@ -145,6 +155,11 @@ public abstract class Entity {
 
 	public void setScore(int i) {
 		this.score = i;
+	}
+	
+	public void setVerticalSpeed(float s)
+	{
+		vertical_speed = s;
 	}
 }
 

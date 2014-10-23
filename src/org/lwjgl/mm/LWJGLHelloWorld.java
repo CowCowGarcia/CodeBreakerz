@@ -9,20 +9,25 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
+/**this class is the basic gameloop and the main class, it is a good idea to eventually split the main and gameloop */
 public class LWJGLHelloWorld extends BasicGame 
 {
 	
-	private Player player;
+	private Player player; 
 	private Controller controller;
 	private Image p1;
 	private TiledMap level;
 	boolean up = false;
 	double counter2 = 4;
+	private Image collisionimg;
+	private Collision collision;
+	String released= "player.getScore()";
 	
 	/**Constructor setting title **/
 	public LWJGLHelloWorld(String title) 
 	{
 		super(title);
+		
 	}
 	
 	/**init method overridden from BasicGame class in the slick library, here is where variables are initialised for use**/
@@ -30,31 +35,35 @@ public class LWJGLHelloWorld extends BasicGame
 	public void init(GameContainer gc) throws SlickException 
 	{
 		controller = new Controller(gc); // GameContainer given to Controller class
-		player = new Player();
-		p1 = new Image("res/sprites/Idle.png");
+		player = new Player(); //new instance of player
+		p1 = new Image("res/sprites/Idle.png"); //setting player 1 image
+		collisionimg = new Image("res/levels/testCol.png");// collision image
 		//level = new TiledMap("res/levels/level.tmx"); //leave this for now
-		
+
+		collision = new Collision(collisionimg); //create collision class parsing in collision image
 	}
-	String released= "player.getScore()";
+	
 	/**render method overridden from BasicGame class in the slick library, here is where everytrhing is drawn to screen **/
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException 
 	{
+		g.drawImage(collisionimg, 0, 0);
 		g.drawImage(p1, player.getX(),player.getY());
 		//level.render(0, 0); //leave this for now
 		g.drawString(released, 10, 30);
 		
+		System.out.print(collisionimg.getHeight());
 		
 	}
+	
 	
 	/**update method overridden from BasicGame class in the slick library, this is where all movement and anything that constantly needs to change happens.
 	 * This method loops until game is closed **/
 	@Override
 	public void update(GameContainer gc, int arg1) throws SlickException 
 	{
-		  
 		player.setScore(0);
-		
+		///////////////////////////////player jump////////////////////////////////////
 		if(controller.isKeyDownUP())
 		{
 			counter2 = counter2 + 0.1;
@@ -67,19 +76,40 @@ public class LWJGLHelloWorld extends BasicGame
 		}
 		else
 		{
-			
 			up = false;
 			counter2 = 4;
 		}
+<<<<<<< HEAD
 		
 		
 		if(controller.isKeyDownLEFT())
 		{
 			//player.Left();
+=======
+		///////////////////////////////////////////////////////////////////////////
+		
+		/////////////////////////////player fall////////////////////////////////
+		if (collision.bottomClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight()) && !up) //if the bottom of the character is clear and character is finished going up
+		{
+			player.gravitons(); //call gravatons() function
+		}
+		//makes sure player does not go below a point, use this to fix bug 4
+		if (player.getY() > 400) 
+		{
+			player.setY(400); 
+		}
+		///////////////////////////////////////////////////////////////////////////
+		
+		////////////////////////////player control////////////////////////////////
+		if(controller.isKeyDownLEFT()) //if key down for left
+		{
+			
+>>>>>>> 19969df81244a5fc02e74fa4d16e01d5103c275b
 			keyPressed(Input.KEY_A, 'a');
 			released = "left";
 		}
 		else
+<<<<<<< HEAD
 		{keyReleased(Input.KEY_A, 'a');}
 		
 		if(controller.isKeyDownRIGHT())
@@ -87,11 +117,13 @@ public class LWJGLHelloWorld extends BasicGame
 			//player.Right();
 			keyPressed(Input.KEY_D, 'd');
 			released = "right";
+=======
+		{
+			keyReleased(Input.KEY_A, 'a');
+>>>>>>> 19969df81244a5fc02e74fa4d16e01d5103c275b
 		}
-		else
-		{keyReleased(Input.KEY_D, 'd');}
 		
-		
+<<<<<<< HEAD
 	
 		
 		
@@ -102,37 +134,46 @@ public class LWJGLHelloWorld extends BasicGame
 		}
 		//if player gets stuck in floor moves player above
 		if (player.getY() > 400)
+=======
+		if(controller.isKeyDownRIGHT())//if key down for right
 		{
-			player.setY(400);
+			
+			keyPressed(Input.KEY_D, 'd');
+			released = "right";
 		}
+		else
+>>>>>>> 19969df81244a5fc02e74fa4d16e01d5103c275b
+		{
+			keyReleased(Input.KEY_D, 'd');
+		}
+		//////////////////////////////////////////////////////////////////////
 		
 	}
 	
-	public void keyPressed(int key, char c) {
+	public void keyPressed(int key, char c) 
+	{
 		
-		if (key == Input.KEY_D) {
+		if (key == Input.KEY_D) 
+		{
+			if(collision.rightClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight(), player.getHorizontalSpeed()))//check collision
 			player.Right();
 		}
 		
-		if (key == Input.KEY_A) {
+		if (key == Input.KEY_A) 
+		{
+			if (collision.leftClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight(), player.getHorizontalSpeed()))//check collision
 			player.Left();
-		}/*;
-		if (key == Input.KEY_D) {
-			player.Right();;
-		};
-		if (key == Input.KEY_D) {
-			player.Right();;
-		};*/
+		}
 	}
 	
-	public void keyReleased(int key, char c){
+	public void keyReleased(int key, char c)
+	{
 		if (released == "right")
 		{
 			if (key == Input.KEY_D) 
 			{
+				if(collision.rightClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight(), player.getHorizontalSpeed()))//check collision
 				player.StopRight();
-			//released = "True";
-			
 			}
 		}
 		
@@ -140,9 +181,8 @@ public class LWJGLHelloWorld extends BasicGame
 		{
 			if (key == Input.KEY_A) 
 			{
+				if (collision.leftClear(player.getX(), player.getY(), p1.getWidth(), p1.getHeight(), player.getHorizontalSpeed()))//check collision
 				player.StopLeft();
-			//released = "blue";
-			
 			}
 		}
 	}
