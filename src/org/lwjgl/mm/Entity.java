@@ -1,30 +1,39 @@
 package org.lwjgl.mm;
 
+import org.newdawn.slick.Image;
+
 /**this is an abstract class, this class never gets called but is extended to other classes like the player 
 * class. other classes will use these methods and variables **/
 public abstract class Entity {
 
-	protected float jumpHeight = 3;
-	protected float gravity = 0.1f;
+	protected float jumpHeight = 3; //max jump height
+	protected float gravity = 0.1f; //the force of the gravity
 	
 	//these values control x movement 
 	protected float horizontalSpeed = 0.5f;
 	protected float speedIncrease = 0.05f; 
 	
-	protected float x = 100;
-	protected float y = 100;
+	protected float x = 100; //x coordinate 
+	protected float y = 100; //y coordinate
 
-	protected float vertical_speed = 0.5f;
-	protected float vertical_position;  
-    protected final float Y_TERMINAL_VELOCITY = 20;
+	protected float vertical_speed = 0.5f; // y coordinate speed
+	protected float vertical_position;  //i dont think we need this
+    
+	//max speed
+	protected final float Y_TERMINAL_VELOCITY = 20;
     protected final float X_MAX_SPEED = 6;
 	
 	
-    protected int score;
-    protected int health;
-    protected int lives;
+    protected int score; //maybe should be in player
+    protected int health; // entity health
+    protected int lives; //maybe should be in player
     
-    public void gravitons ()
+    /**
+     * used to generate falling/gravity
+     * @param image represents the image being used to apply gravity to 
+     * @param collision represents the collision object used 
+     */
+    public void gravitons (Image image, Collision collision)
     {
         this.vertical_speed = (float) (this.vertical_speed + gravity);
         
@@ -32,7 +41,7 @@ public abstract class Entity {
         {
             this.vertical_speed = Y_TERMINAL_VELOCITY;
         }
-        
+        if(collision.bottomClear(getX(), getY(), image.getWidth(), image.getHeight()))
         this.y = this.y + this.vertical_speed;
         
         
@@ -40,84 +49,9 @@ public abstract class Entity {
         if (y > 400) y = 400;//keeps it on the level
     }
     
-<<<<<<< HEAD
-	public void Jump(int s)
-	{
-		/*this.vertical_speed = (float) (this.vertical_speed + gravity);
-    if (this.vertical_speed > Y_TERMINAL_VELOCITY)
-    {
-        this.vertical_speed = Y_TERMINAL_VELOCITY;
-    }
-    this.y = this.y - this.vertical_speed;*/
-   y= y+ s;
-	}
-
-	public void Left()
-	
-	{	
-
-		this.setHorizontalSpeed((float) (this.getHorizontalSpeed() * getSpeedIncrease()));
-	
-	    if (this.getHorizontalSpeed() > X_MAX_SPEED)
-	    {
-	        this.setHorizontalSpeed(X_MAX_SPEED);
-	    }
-	    
-	    this.x = this.x - this.getHorizontalSpeed();
-		
-	}
-	
-	public void Right()
-	{
-		this.setHorizontalSpeed((float) (this.getHorizontalSpeed() * getSpeedIncrease()));
-		
-	    if (this.getHorizontalSpeed() > X_MAX_SPEED)
-	    {
-	        this.setHorizontalSpeed(X_MAX_SPEED);
-	    }
-	    
-	    this.x = this.x + this.getHorizontalSpeed();
-	}
-	
-	public void StopRight()
-	{
-		this.setHorizontalSpeed ((float) (this.getHorizontalSpeed() / this.getSpeedIncrease()));
-		this.x = this.x + this.getHorizontalSpeed();
-		
-		if (this.getHorizontalSpeed() == 0)
-		{
-		this.setHorizontalSpeed(1);
-		}
-		
-		score++;
-	}
-	
-	public void StopLeft()
-	{
-		this.setHorizontalSpeed ((float) (this.getHorizontalSpeed() / this.getSpeedIncrease()));
-		this.x = this.x - this.getHorizontalSpeed();
-		
-		if (this.getHorizontalSpeed() == 0)
-		{
-		this.setHorizontalSpeed(1);
-		}
-	}
-	
-	public void StartJump()
-	{
-		
-	}
-	
-	public void EndJump()
-	{
-		
-	}
-	
-=======
 	//TODO entity should get generic left and right functions
     
-    
->>>>>>> 19969df81244a5fc02e74fa4d16e01d5103c275b
+    ////////////////////gets and sets///////////////////////////////////////
 	public float getX()
 	{
 		return x;
